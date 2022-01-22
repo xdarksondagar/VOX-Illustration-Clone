@@ -27,6 +27,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .container {
@@ -331,7 +332,7 @@ img {
 .portfolio--showcase img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
   background: var(--white);
   border-radius: 5px;
   object-position: top;
@@ -375,8 +376,11 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease-in-out;
   position: relative;
+}
+.plan:hover,
+.plan:focus {
+  background: var(--primary);
 }
 .plan--img {
   margin: 2rem 0;
@@ -404,18 +408,16 @@ img {
 .plan--list {
   height: 22rem;
   margin-top: 2rem;
-}
-.plan--list__scroll {
   overflow-y: scroll;
 }
-.plan--list__scroll::-webkit-scrollbar {
+.plan--list::-webkit-scrollbar {
   width: 4px;
 }
-.plan--list__scroll::-webkit-scrollbar-track {
+.plan--list::-webkit-scrollbar-track {
   background: #202897;
   border-radius: 100px;
 }
-.plan--list__scroll::-webkit-scrollbar-thumb {
+.plan--list::-webkit-scrollbar-thumb {
   background-color: var(--primary);
   border-radius: 100px;
 }
@@ -425,17 +427,10 @@ img {
   font-size: 1.4rem;
   margin: 0.5em 0 0.5em 2rem;
 }
-.plan-btn {
-  margin-top: 1rem;
-}
-.plan:hover,
-.plan:focus {
-  background: var(--primary);
-}
 
 .plan--btn {
   font-size: 1.4rem;
-  margin-top: 10rem;
+  margin-top: 5rem;
   color: var(--accent);
   text-transform: capitalize;
   background-color: var(--white);
@@ -450,7 +445,6 @@ img {
 .plan:focus .plan--list__scroll::-webkit-scrollbar-thumb {
   background-color: var(--secondary);
 }
-
 .top-seller {
   position: absolute;
   top: -3px;
@@ -1108,9 +1102,6 @@ footer {
     align-self: center;
   }
   .nav__list {
-    display: none;
-  }
-  .nav__list--active {
     display: block;
     position: absolute;
     top: 0;
@@ -1122,9 +1113,21 @@ footer {
     background: var(--white);
     padding-left: 10%;
     padding-top: 9rem;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease-in;
+  }
+  .nav__list--active {
+    transform: translate(0);
+    opacity: 1;
+  }
+  .nav__list li {
+    margin-top: 3rem;
+    opacity: 0;
+    transition: all 0.15s ease-in;
   }
   .nav__list--active li {
-    margin-top: 3rem;
+    opacity: 1;
   }
   .nav--hamburger--active {
     position: relative;
@@ -1217,8 +1220,15 @@ footer {
     left: 60%;
   }
   .about--hero,
-  .process--hero {
-    background: var(--accent);
+  .process--hero,
+  .portfolio--hero,
+  .pricing--hero {
+    background: rgb(41, 115, 167);
+    background: linear-gradient(
+      220deg,
+      rgba(41, 115, 167, 1) 20%,
+      rgba(254, 179, 21, 1) 63%
+    );
   }
   .about--testimonials {
     background: #ffdfe6;
@@ -1231,10 +1241,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .portfolio--hero,
-  .pricing--hero {
-    background: #d8771c;
   }
   .process-card {
     flex-direction: column;
@@ -1252,6 +1258,9 @@ footer {
   }
   .contact--form {
     flex-direction: column;
+  }
+  .lets-chat {
+    display: none;
   }
 }
 @media screen and (max-width: 500px) {
