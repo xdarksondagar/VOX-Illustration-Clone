@@ -1,3 +1,3 @@
 # VOX-Illustration-Clone
-This is an awesome illustration based website.
-This is my first multi page website with use of HTML, CSS and Java Script.
+
+![Screenshot (3)](https://user-images.githubusercontent.com/89702748/150653659-8c3f2f3e-d455-46c3-a6d6-da69bc18d303.png)
