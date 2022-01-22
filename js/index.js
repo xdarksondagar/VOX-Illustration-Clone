@@ -7,7 +7,7 @@ const loadMore = document.querySelector("#load-more");
 const lcClose = document.querySelector(".lc-close");
 
 window.addEventListener("load", function () {
-  generateImg(20);
+  if (showcase) generateImg(20);
   AOS.init({
     once: true,
   });
@@ -38,24 +38,25 @@ function generateImg(imgLimit) {
     showcase.appendChild(genImg);
   }
 }
-
-portLink.forEach((el) => {
-  el.addEventListener("click", () => {
-    removeActiveClass();
-    el.classList.add("active");
-    showcase.innerHTML = "";
-    generateImg(20);
-  });
-});
-
 function removeActiveClass() {
   portLink.forEach((el) => el.classList.remove("active"));
 }
 
-loadMore.addEventListener("click", () => {
-  generateImg(8);
-  loadMore.style.display = "none";
-});
+if (showcase) {
+  portLink.forEach((el) => {
+    el.addEventListener("click", () => {
+      removeActiveClass();
+      el.classList.add("active");
+      showcase.innerHTML = "";
+      generateImg(20);
+    });
+  });
+
+  loadMore.addEventListener("click", () => {
+    generateImg(8);
+    loadMore.style.display = "none";
+  });
+}
 
 lcClose.addEventListener("click", () => {
   document.querySelector(".lc-img").style.display = "none";
