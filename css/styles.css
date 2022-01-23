@@ -335,7 +335,7 @@ img {
   object-fit: contain;
   background: var(--white);
   border-radius: 5px;
-  object-position: top;
+  object-position: center;
 }
 /*  PORTFOLIO-END  */
 
